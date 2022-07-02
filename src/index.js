@@ -25,12 +25,15 @@ const client = new Instagram({
     proxy: config.node_env === "PRODUCTION"? config.fixie_url : undefined
   });
 
-const hashtags = '#sneakers #nike #snkrs #jordans #sneakerhead #india #kicks';
+const hashtags = `#sneakers #nike #snkrs #jordans #sneakerhead #india #kicks #sneaker #sneakersaddict` +
+`#sneakernews #complex #findmykicks #sneakerholics #sneakerfreak`;
 
 
 // https://crontab.guru/
 // Daily 5:00 PM
-cron.schedule("30 12 * * *", async () => {
+// 7:30 PM IST is 14:00 UTC
+// 6:00 PM IST is 12:30 UTC
+cron.schedule("0 14 * * *", async () => {
 const instagramLoginFunction = async () => {
 
   try {
@@ -159,7 +162,7 @@ const uploadPhotosToInstagram = async () => {
             .quality(100)
             .print(font, 50, 50, item.name)
             .print(font, 50, 130, `${date[1]} ${date[2]} ${date[3]}`)
-            .print(font, 50, 180, `${date[0]}, ${date[4]} ${date[5]}`)
+            .print(font, 50, 180, `${date[0]}, ${date[4]} ${date[5]} IST`)
             .write(`./${imgName}.jpg`, async () => {
 
                 await client.uploadPhoto({
