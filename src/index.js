@@ -1,17 +1,3 @@
-// import express from "express";
-// import Instagram from "instagram-web-api";
-// import getDataFromSnkrsSite from "./snkrsSite.js";
-// import * as cron from "node-cron";
-// import Jimp from "jimp";
-// import * as fs from 'fs';
-// import imap from 'imap-simple';
-// import _ from 'lodash';
-// import * as mailparser from 'mailparser';
-// import { config } from "./config.js";
-// import { uploadPhotosToInstagram } from "./instagramClient.js";
-// import axios from "axios";
-// import * as cheerio from "cheerio";
-
 const _ = require('lodash');
 const config = require('./config');
 const cron = require('node-cron');
@@ -44,7 +30,7 @@ const hashtags = '#sneakers #nike #snkrs #jordans #sneakerhead #india #kicks';
 
 // https://crontab.guru/
 // Daily 5:00 PM
-// cron.schedule("30 12 * * *", async () => {
+cron.schedule("30 12 * * *", async () => {
 const instagramLoginFunction = async () => {
 
   try {
@@ -151,12 +137,12 @@ const instagramLoginFunction = async () => {
 
 instagramLoginFunction();
 
-// });
+});
 
 const uploadPhotosToInstagram = async () => {
     const data = await getDataFromSnkrsSite();
   
-    const font = await Jimp.loadFont('./imagefont.fnt');
+    const font = await Jimp.loadFont('./fonts/imagefont.fnt');
 
     console.log(`[INFO] uploading ${data.length} pictures`);
     data.forEach((item) => {
@@ -195,7 +181,6 @@ const uploadPhotosToInstagram = async () => {
     });
 };
 
-
 app.listen(port, () => {
-    console.log(`[INFO]App listening on ${port}`);
+  console.log(`[INFO]App listening on ${port}`);
 })
