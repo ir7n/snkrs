@@ -33,7 +33,8 @@ const hashtags = `#sneakers #nike #snkrs #jordans #sneakerhead #india #kicks #sn
 // Daily 5:00 PM
 // 7:30 PM IST is 14:00 UTC
 // 6:00 PM IST is 12:30 UTC
-cron.schedule("0 14 * * *", async () => {
+cron.schedule("30 14 * * *", async () => {
+  console.log("[INFO] Cron job started!")
 const instagramLoginFunction = async () => {
 
   try {
